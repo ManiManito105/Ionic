@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <ion-item>
+      <ion-input
+        label="usuario"
+        labelPlacement="floating"
+        formControlName="username">
+      </ion-input>
+    </ion-item>
+    <div class="error-message" *ngIf="username?.invalid && (username?.dirty || username?.touched)">
+      <small *ngIf="username?.errors?.['required']">El nombre de usuario es obligatorio.</small>
+    </div>
+
+    <ion-item>
+      <ion-input
+        type="password"
+        label="contraseña"
+        labelPlacement="floating"
+        formControlName="password">
+      </ion-input>
+    </ion-item>
+    <div class="error-message" *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+      <small *ngIf="password?.errors?.['required']">La contraseña es requerida.</small>
+      <small *ngIf="password?.errors?.['minlength']">La contraseña debe tener al menos 4 caracteres.</small>
+    </div>
+
+    <ion-button 
+      expand="block" 
+      type="submit"
+      class="ion-margin-top"
+      [disabled]="loading || loginForm.invalid">
+      <ng-container *ngIf="!loading">Iniciar sesión</ng-container>
+    </ion-button>
+  </form>
+</ion-content>

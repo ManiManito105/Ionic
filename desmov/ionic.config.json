@@ -1,0 +1,7 @@
+{
+  "name": "desmov",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
